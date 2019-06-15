@@ -73,3 +73,25 @@ y_pred = (y_pred > 0.5)
 #create a confusion matrix
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_pred , y_test)
+
+#predicting for a particulAr test example
+'''
+Geography: France
+Credit Score: 600
+Gender: Male
+Age: 40 years old
+Tenure: 3 years
+Balance: $60000
+Number of Products: 2
+Does this customer have a credit card ? Yes
+Is this customer an Active Member: Yes
+Estimated Salary: $50000
+'''
+
+new_pred = classifier.predict(sc.transform(np.array([[0.0,0,600,1,40,3,60000,2,1,1,50000]])))
+new_pred = (new_pred > 0.5)
+
+#find accuracy
+from sklearn.metrics import accuracy_score
+accuracy = accuracy_score(y_test , y_pred)
+print(accuracy*100)
